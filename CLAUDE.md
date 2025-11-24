@@ -184,6 +184,7 @@ Located in [`docs/reference/`](docs/reference/):
 - **shadcn-svelte** - [`docs/reference/shadcn-svelte/`](docs/reference/shadcn-svelte/) (54 component docs)
 - **Superforms** - [`docs/reference/superform/`](docs/reference/superform/) (17 guides)
 - **TanStack Tables** - [`docs/reference/tanstack-tables/`](docs/reference/tanstack-tables/) (70 API docs)
+- **Mermaid.js** - [`docs/reference/mermaid_js/`](docs/reference/mermaid_js/) (Diagram syntax and configuration)
 
 ### Standards Documentation
 Located in [`docs/standards/`](docs/standards/):
@@ -201,7 +202,8 @@ Located in [`skills/`](skills/):
 
 ### Templates
 Located in [`templates/`](templates/):
-- _Empty - code templates can be added here_
+
+- **Support Modal** - [`templates/support-modal/`](templates/support-modal/) (Slack-integrated user support system)
 
 ---
 
