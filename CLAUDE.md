@@ -1,10 +1,24 @@
 # Cloud Lobsters - Team-Wide Claude Code Standards
 
-## Table of Contents
-- [Component Patterns](#component-patterns)
-- [Svelte 5 Best Practices](#svelte-5-best-practices)
-- [Code Style Guidelines](#code-style-guidelines)
-- [Architecture Patterns](#architecture-patterns)
+This repository contains shared Claude Code patterns, commands, and documentation for the Cloud Lobsters team.
+
+---
+
+## Available Commands
+
+Workflow shortcuts available via `/` prefix in Claude Code:
+
+- **`/create-modal`** - Create modal component with centralized state pattern
+  - See: [`commands/create-modal.md`](commands/create-modal.md)
+
+- **`/create-table`** - Create table component with TanStack Table Core
+  - See: [`commands/create-table.md`](commands/create-table.md)
+
+- **`/create-form`** - Create form component with Superforms validation
+  - See: [`commands/create-form.md`](commands/create-form.md)
+
+- **`/review-component`** - Review component against team patterns
+  - See: [`commands/review-component.md`](commands/review-component.md)
 
 ---
 
@@ -20,24 +34,7 @@ Use centralized modal state management to avoid prop drilling.
 - Open modals from anywhere by updating modal state
 - Clean up state when modals close
 
-**Structure:**
-```typescript
-// modal-state.svelte.ts
-export const modals = $state({
-  timeline: {
-    visible: false,
-    claimId: null
-  }
-});
-```
-
-**Usage:**
-```typescript
-// Open modal from anywhere
-import { modals } from './modal-state.svelte';
-
-modals.timeline = { visible: true, claimId: 123 };
-```
+**Full Implementation Guide:** Use `/create-modal` command
 
 **Anti-Patterns:**
 - ❌ Don't use `$bindable()` props
@@ -59,7 +56,10 @@ Use TanStack Table Core for client-side filtering and sorting.
 - Client-side filtering for < 10k rows
 - Server-side pagination for > 10k rows
 - Use global search + column filters
-- Implement clear filters button
+
+**Full Implementation Guide:** Use `/create-table` command
+
+**Reference Documentation:** [`docs/reference/tanstack-tables/`](docs/reference/tanstack-tables/)
 
 ---
 
@@ -73,6 +73,10 @@ Use SvelteKit Superforms for type-safe form handling with validation.
 - Client uses `superForm()` for reactivity
 - Type-safe throughout
 
+**Full Implementation Guide:** Use `/create-form` command
+
+**Reference Documentation:** [`docs/reference/superform/`](docs/reference/superform/)
+
 ---
 
 ## Svelte 5 Best Practices
@@ -84,14 +88,11 @@ Use SvelteKit Superforms for type-safe form handling with validation.
 - ✅ `$props()` for component props
 - ❌ NEVER use `export let` (Svelte 4 syntax)
 
+**Reference Documentation:** [`docs/reference/svelte-5/migration-guide.md`](docs/reference/svelte-5/migration-guide.md)
+
 ### {@const} Placement Rules
-`{@const}` must be the **immediate child** of:
-- `{#snippet}` blocks
-- `{#if}`, `{:else if}`, `{:else}` blocks
-- `{#each}`, `{:then}`, `{:catch}` blocks
-- `<svelte:fragment>`
-- `<svelte:boundary>`
-- `<Component>` (custom components)
+`{@const}` must be the **immediate child** of control flow blocks:
+- `{#snippet}`, `{#if}`, `{#each}`, `<svelte:fragment>`, `<Component>`
 
 **Correct:**
 ```svelte
@@ -128,6 +129,8 @@ Use SvelteKit Superforms for type-safe form handling with validation.
 - Custom CSS only when necessary
 - Use `cn()` helper for conditional classes
 
+**Component Library:** [`docs/reference/shadcn-svelte/`](docs/reference/shadcn-svelte/)
+
 ### TypeScript
 - Always use TypeScript for new code
 - Define interfaces for component props
@@ -156,6 +159,30 @@ Use SvelteKit Superforms for type-safe form handling with validation.
 
 ---
 
+## Reference Documentation
+
+### Framework Documentation
+Located in [`docs/reference/`](docs/reference/):
+
+- **Svelte 5** - [`docs/reference/svelte-5/migration-guide.md`](docs/reference/svelte-5/migration-guide.md)
+- **shadcn-svelte** - [`docs/reference/shadcn-svelte/`](docs/reference/shadcn-svelte/) (54 component docs)
+- **Superforms** - [`docs/reference/superform/`](docs/reference/superform/) (17 guides)
+- **TanStack Tables** - [`docs/reference/tanstack-tables/`](docs/reference/tanstack-tables/) (70 API docs)
+
+### Agents
+Located in [`agents/`](agents/):
+- _Empty - agents can be added here as team needs them_
+
+### Skills
+Located in [`skills/`](skills/):
+- _Empty - tool integration guides can be added here_
+
+### Templates
+Located in [`templates/`](templates/):
+- _Empty - code templates can be added here_
+
+---
+
 ## Common Development Commands
 
 ```bash
@@ -164,4 +191,41 @@ pnpm check            # Run Svelte type checking
 pnpm build            # Build for production
 pnpm format           # Format code with Prettier
 pnpm lint             # Check code formatting
+```
+
+---
+
+## Using This Repository
+
+### As a Git Submodule
+This repository is designed to be used as a Git submodule named `.claude`:
+
+```bash
+# Add to your project
+git submodule add https://github.com/Cloud-Lobsters/.claude.git .claude
+
+# Update to latest
+cd .claude && git pull origin main && cd ..
+git add .claude && git commit -m "chore: update shared Claude standards"
+```
+
+### Commands
+All commands in `commands/` are automatically available in Claude Code when this is your `.claude` submodule.
+
+### Documentation
+All reference documentation in `docs/reference/` is available for lookup when needed.
+
+---
+
+## Repository Structure
+
+```
+.claude/
+├── CLAUDE.md              # This file - overview and patterns
+├── commands/              # Workflow commands (accessible via /)
+├── agents/                # Behavioral agents
+├── skills/                # Tool integration guides
+├── docs/reference/        # Framework documentation (142 files)
+├── templates/             # Code templates
+└── scripts/               # Helper scripts
 ```
