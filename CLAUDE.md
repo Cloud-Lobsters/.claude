@@ -6,7 +6,7 @@ This repository contains shared Claude Code patterns, commands, and documentatio
 
 ## Important
 
-Always use @lucide-svelte for icons not lucide-svelte Every control on the UI that a user can click and triggers and action should have cursor-pointer applied to it SOURCE COMPONENT. So for a button using shadCN, modify the ShadCN component itsself!
+Always use @lucide/svelte for icons not lucide-svelte Every control on the UI that a user can click and triggers and action should have cursor-pointer applied to it SOURCE COMPONENT. So for a button using shadCN, modify the ShadCN component itsself!
 
 ## Available Commands
 
