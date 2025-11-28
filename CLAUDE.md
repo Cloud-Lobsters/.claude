@@ -2,25 +2,34 @@
 
 This repository contains shared Claude Code patterns, commands, and documentation for the Cloud Lobsters team.
 
----
+--
+
+## Important
+
+Always use @lucide-svelte for icons not lucide-svelte Every control on the UI that a user can click and triggers and action should have cursor-pointer applied to it SOURCE COMPONENT. So for a button using shadCN, modify the ShadCN component itsself!
 
 ## Available Commands
 
 Workflow shortcuts available via `/` prefix in Claude Code:
 
 - **`/cmd-create-modal`** - Create modal component with centralized state pattern
+
   - See: [`commands/cmd-create-modal.md`](commands/cmd-create-modal.md)
 
 - **`/cmd-create-table`** - Create table component with TanStack Table Core
+
   - See: [`commands/cmd-create-table.md`](commands/cmd-create-table.md)
 
 - **`/cmd-create-form`** - Create form component with Superforms validation
+
   - See: [`commands/cmd-create-form.md`](commands/cmd-create-form.md)
 
 - **`/cmd-review-component`** - Review component against team patterns
+
   - See: [`commands/cmd-review-component.md`](commands/cmd-review-component.md)
 
 - **`/cmd-review-structure`** - Audit project folder structure against team standards
+
   - See: [`commands/cmd-review-structure.md`](commands/cmd-review-structure.md)
 
 - **`/cmd-create-sheets-rating`** - Wire up Google Sheets-based rating engine
@@ -35,6 +44,7 @@ Workflow shortcuts available via `/` prefix in Claude Code:
 Use centralized modal state management to avoid prop drilling.
 
 **Key Principles:**
+
 - Store modal state in `modal-state.svelte.ts` using `$state()`
 - Modal components use `$derived()` to extract state
 - Open modals from anywhere by updating modal state
@@ -43,6 +53,7 @@ Use centralized modal state management to avoid prop drilling.
 **Full Implementation Guide:** Use `/cmd-create-modal` command
 
 **Anti-Patterns:**
+
 - ❌ Don't use `$bindable()` props
 - ❌ Don't pass open state through props
 - ❌ Don't mutate nested properties separately
@@ -54,11 +65,13 @@ Use centralized modal state management to avoid prop drilling.
 Use TanStack Table Core for client-side filtering and sorting.
 
 **Key Principles:**
+
 - Server loads data in `+page.server.ts`
 - Client handles filtering/sorting with TanStack Table
 - Use `TableFilterManager` for centralized filter logic
 
 **Best Practices:**
+
 - Client-side filtering for < 10k rows
 - Server-side pagination for > 10k rows
 - Use global search + column filters
@@ -74,6 +87,7 @@ Use TanStack Table Core for client-side filtering and sorting.
 Use SvelteKit Superforms for type-safe form handling with validation.
 
 **Key Principles:**
+
 - Define Zod schema for validation
 - Server action handles submission
 - Client uses `superForm()` for reactivity
@@ -90,6 +104,7 @@ Use SvelteKit Superforms for type-safe form handling with validation.
 Use Google Sheets as a rating engine for complex insurance calculations that business users need to modify.
 
 **Key Principles:**
+
 - Google Sheet contains calculation formulas
 - Yellow cells = inputs (written by code)
 - "fieldName" column maps cells to form fields
@@ -98,6 +113,7 @@ Use Google Sheets as a rating engine for complex insurance calculations that bus
 - Business users update formulas without code changes
 
 **Setup Process:**
+
 1. Decide: Reuse existing service account or create new one?
    - **Reuse:** Same app, same environment → faster setup
    - **Create new:** Different environment/security domain → better isolation
@@ -122,6 +138,7 @@ Use Google Sheets as a rating engine for complex insurance calculations that bus
 ## Svelte 5 Best Practices
 
 ### Runes (Always Use)
+
 - ✅ `$state()` for reactive state
 - ✅ `$derived()` for computed values - **IMPORTANT**: When using `$derived`, the value must be accessed as a function: `const value = $derived(otherValue); console.log(value())`
 - ✅ `$effect()` for side effects
@@ -131,10 +148,13 @@ Use Google Sheets as a rating engine for complex insurance calculations that bus
 **Reference Documentation:** [`docs/reference/svelte-5/migration-guide.md`](docs/reference/svelte-5/migration-guide.md)
 
 ### {@const} Placement Rules
+
 `{@const}` must be the **immediate child** of control flow blocks:
+
 - `{#snippet}`, `{#if}`, `{#each}`, `<svelte:fragment>`, `<Component>`
 
 **Correct:**
+
 ```svelte
 {#each items as item}
   {@const isSelected = checkSelection(item.value)}
@@ -143,6 +163,7 @@ Use Google Sheets as a rating engine for complex insurance calculations that bus
 ```
 
 **Incorrect:**
+
 ```svelte
 <div>
   {@const value = something}  <!-- ❌ Error: inside <div> -->
@@ -151,6 +172,7 @@ Use Google Sheets as a rating engine for complex insurance calculations that bus
 ```
 
 ### Animations
+
 - Always use **Svelte native animations** (not CSS animations)
 - Use `transition:` directives
 - Use `animate:` for list reordering
@@ -160,11 +182,13 @@ Use Google Sheets as a rating engine for complex insurance calculations that bus
 ## Code Style Guidelines
 
 ### File Naming
+
 - Use `snake_case` for all code files
 - Components: `my-component.svelte`
 - Routes: `+page.svelte`, `+page.server.ts`, `+layout.svelte`
 
 ### Styling
+
 - **Tailwind-first** approach
 - Custom CSS only when necessary
 - Use `cn()` helper for conditional classes
@@ -172,6 +196,7 @@ Use Google Sheets as a rating engine for complex insurance calculations that bus
 **Component Library:** [`docs/reference/shadcn-svelte/`](docs/reference/shadcn-svelte/)
 
 ### TypeScript
+
 - Always use TypeScript for new code
 - Define interfaces for component props
 - Type database queries properly
@@ -181,9 +206,11 @@ Use Google Sheets as a rating engine for complex insurance calculations that bus
 ## Architecture Patterns
 
 ### Folder Structure
+
 All projects must follow the standard folder structure defined in [`docs/standards/folder-structure.md`](docs/standards/folder-structure.md).
 
 **Key Requirements:**
+
 - Feature routes must have `components/` folder
 - Modals use centralized state in `components/modals/modal-state.svelte.ts`
 - Use standard folder names: `components/`, `stores/`, `utils/`, `api/`
@@ -192,17 +219,20 @@ All projects must follow the standard folder structure defined in [`docs/standar
 **Enforcement**: Use `/cmd-review-structure` command to audit projects
 
 ### SvelteKit Routing
+
 - Use `+page.svelte` for pages
 - Use `+page.server.ts` for server-side data loading
 - Use `+layout.svelte` for shared layouts
 - Use `+server.ts` for API endpoints
 
 ### Data Loading
+
 - Server loads data, client displays
 - Use form actions for mutations
 - Handle errors gracefully
 
 ### State Management
+
 - Component state: `$state()`
 - Shared state: Svelte stores or context
 - Modal state: Centralized state pattern
@@ -213,6 +243,7 @@ All projects must follow the standard folder structure defined in [`docs/standar
 ## Reference Documentation
 
 ### Framework Documentation
+
 Located in [`docs/reference/`](docs/reference/):
 
 - **Auth.js** - [`docs/reference/authjs/`](docs/reference/authjs/) (281 reference docs including SvelteKit integration)
@@ -225,20 +256,26 @@ Located in [`docs/reference/`](docs/reference/):
 - **Mermaid.js** - [`docs/reference/mermaid_js/`](docs/reference/mermaid_js/) (Diagram syntax and configuration)
 
 ### Standards Documentation
+
 Located in [`docs/standards/`](docs/standards/):
 
 - **Folder Structure** - [`docs/standards/folder-structure.md`](docs/standards/folder-structure.md) (Project structure standards)
 - **Implementation Rules** - [`docs/standards/implementation-rules.md`](docs/standards/implementation-rules.md) (Critical verification rules)
 
 ### Agents
+
 Located in [`agents/`](agents/):
+
 - _Empty - agents can be added here as team needs them_
 
 ### Skills
+
 Located in [`skills/`](skills/):
+
 - _Empty - tool integration guides can be added here_
 
 ### Templates
+
 Located in [`templates/`](templates/):
 
 - **Support Modal** - [`templates/support-modal/`](templates/support-modal/) (Slack-integrated user support system)
@@ -260,6 +297,7 @@ pnpm lint             # Check code formatting
 ## Using This Repository
 
 ### As a Git Submodule
+
 This repository is designed to be used as a Git submodule named `.claude`:
 
 #### Initial Setup (First Time)
@@ -325,9 +363,11 @@ git commit -m "chore: update .claude submodule"
 ```
 
 ### Commands
+
 All commands in `commands/` are automatically available in Claude Code when this is your `.claude` submodule.
 
 ### Documentation
+
 All reference documentation in `docs/reference/` is available for lookup when needed.
 
 ---

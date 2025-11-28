@@ -12,9 +12,8 @@ declare global {
 				email: string;
 				name: string;
 				isAdmin: boolean;
+				isExternal: boolean;
 			};
-			cockpitAuthenticated?: boolean; // Whether user has authenticated to cockpit
-			unlockedProjects?: Map<string, string>; // projectId -> masterPassword
 		}
 		// interface PageData {}
 		// interface PageState {}
@@ -22,7 +21,7 @@ declare global {
 	}
 }
 
-// Extend Auth.js types to include id in session
+// Extend Auth.js types to include custom fields in session
 declare module "@auth/sveltekit" {
 	interface Session {
 		user: {
@@ -30,6 +29,7 @@ declare module "@auth/sveltekit" {
 			email: string;
 			name: string;
 			isAdmin: boolean;
+			isExternal: boolean;
 		} & DefaultSession["user"];
 	}
 }
