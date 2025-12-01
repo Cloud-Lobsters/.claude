@@ -6,7 +6,7 @@ This repository contains shared Claude Code patterns, commands, and documentatio
 
 ## Important
 
-Always use @lucide-svelte for icons not lucide-svelte Every control on the UI that a user can click and triggers and action should have cursor-pointer applied to it SOURCE COMPONENT. So for a button using shadCN, modify the ShadCN component itsself!
+Always use @lucide/svelte for icons not lucide-svelte Every control on the UI that a user can click and triggers and action should have cursor-pointer applied to it SOURCE COMPONENT. So for a button using shadCN, modify the ShadCN component itsself!
 
 ## Available Commands
 
@@ -246,6 +246,7 @@ All projects must follow the standard folder structure defined in [`docs/standar
 
 Located in [`docs/reference/`](docs/reference/):
 
+- **Auth.js** - [`docs/reference/authjs/`](docs/reference/authjs/) (281 reference docs including SvelteKit integration)
 - **Svelte 5** - [`docs/reference/svelte-5/migration-guide.md`](docs/reference/svelte-5/migration-guide.md)
 - **Svelte MCP Server** - [`docs/reference/svelte-mcp-server.md`](docs/reference/svelte-mcp-server.md) (How to use MCP tools)
 - **TanStack Table Implementation** - [`docs/reference/tanstack-table-implementation.md`](docs/reference/tanstack-table-implementation.md) (Complete implementation guide)

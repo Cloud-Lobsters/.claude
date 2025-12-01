@@ -2,7 +2,7 @@
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
 	import { Button, buttonVariants } from '@/components/ui/button';
 	import { toast } from 'svelte-sonner';
-	import { Megaphone } from 'lucide-svelte';
+	import { Megaphone } from '@lucide/svelte';
 
 	interface Props {
 		iconOnly?: boolean;
@@ -71,7 +71,7 @@
 		</Dialog.Trigger>
 	{:else}
 		<Dialog.Trigger class={buttonVariants({ variant: 'outline' })} data-css="button">
-			<Megaphone class="w-4 h-4 mr-2" />
+			<Megaphone class="mr-2 h-4 w-4" />
 			Get Support
 		</Dialog.Trigger>
 	{/if}
@@ -86,7 +86,7 @@
 			<div>
 				<label
 					for="support-email"
-					class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block"
+					class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
 				>
 					Email (optional)
 				</label>
@@ -95,14 +95,14 @@
 					type="email"
 					bind:value={email}
 					placeholder="your.email@example.com"
-					class="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+					class="w-full rounded-md border border-gray-300 p-3 focus:ring-2 focus:ring-primary focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
 					disabled={isSubmitting}
 				/>
 			</div>
 			<div>
 				<label
 					for="support-message"
-					class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block"
+					class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
 				>
 					Message
 				</label>
@@ -110,7 +110,7 @@
 					id="support-message"
 					bind:value={problemText}
 					placeholder="Describe your problem here..."
-					class="w-full min-h-[120px] p-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md resize-y focus:outline-none focus:ring-2 focus:ring-primary"
+					class="min-h-[120px] w-full resize-y rounded-md border border-gray-300 p-3 focus:ring-2 focus:ring-primary focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
 					disabled={isSubmitting}
 				></textarea>
 			</div>
