@@ -1,22 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git log:*)",
-      "Bash(git mv:*)",
-      "Bash(docker-compose up:*)",
-      "Bash(pnpm db:push:*)",
-      "Bash(DATABASE_URL=\"postgresql://postgres:password@localhost:5470/blaster\" pnpm db:push:*)",
-      "Bash(DATABASE_URL=\"postgresql://postgres:password@localhost:5470/blaster\" pnpm db:seed:*)",
-      "Bash(lsof:*)",
-      "Bash(xargs kill:*)",
-      "Bash(pnpm dev:*)",
-      "Bash(docker exec:*)",
-      "Bash(pkill:*)",
-      "Bash(node -e \"\nconst Imap = require(''imap'');\n\nconst imap = new Imap({\n  user: ''duncanelliot@yahoo.co.uk'',\n  password: ''ckootjhfhvmoopsx'',\n  host: ''imap.mail.yahoo.com'',\n  port: 993,\n  tls: true,\n  tlsOptions: { rejectUnauthorized: false }\n});\n\nimap.once(''ready'', () => {\n  console.log(''[INFO] Connected to IMAP server'');\n  console.log(''[INFO] Server capabilities:'', imap._config.capabilities);\n  \n  imap.openBox(''INBOX'', false, (err, box) => {\n    if (err) {\n      console.error(''[ERROR] Failed to open inbox:'', err);\n      imap.end();\n      process.exit(1);\n    }\n    \n    console.log(''[INFO] Mailbox info:'');\n    console.log(''  - Total messages:'', box.messages.total);\n    console.log(''  - Recent messages:'', box.messages.recent);\n    console.log(''  - Unseen messages:'', box.messages.unseen);\n    console.log(''  - Flags:'', box.flags);\n    console.log(''  - Permanent flags:'', box.permFlags);\n    \n    // Try to get server search capabilities\n    console.log(''\\n[INFO] Testing different search formats...'');\n    \n    // Test 1: Simple TEXT search (searches all text fields)\n    console.log(''\\n[TEST 1] TEXT search for \"\"AJ\"\"...'');\n    imap.search([[''TEXT'', ''AJ'']], (err, results) => {\n      if (err) {\n        console.log(''  ❌ TEXT search failed:'', err.message);\n      } else {\n        console.log(''  ✅ TEXT search succeeded! Found'', results.length, ''emails'');\n      }\n      \n      // Test 2: BODY search\n      console.log(''\\n[TEST 2] BODY search for \"\"AJ\"\"...'');\n      imap.search([[''BODY'', ''AJ'']], (err, results) => {\n        if (err) {\n          console.log(''  ❌ BODY search failed:'', err.message);\n        } else {\n          console.log(''  ✅ BODY search succeeded! Found'', results.length, ''emails'');\n        }\n        \n        imap.end();\n        process.exit(0);\n      });\n    });\n  });\n});\n\nimap.once(''error'', (err) => {\n  console.error(''[ERROR] IMAP error:'', err.message);\n  process.exit(1);\n});\n\nimap.connect();\n\")"
+      "Bash(pnpm check:*)",
+      "Bash(pnpm dev)",
+      "Bash(timeout 30 pnpm check:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": ["svelte"]
+  "enabledMcpjsonServers": [
+    "svelte"
+  ]
 }
