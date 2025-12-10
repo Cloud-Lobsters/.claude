@@ -4,7 +4,13 @@
       "Bash(pnpm check:*)",
       "Bash(pnpm dev)",
       "Bash(timeout 30 pnpm check:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(timeout 30 pnpm check:svelte:*)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "Bash(npx tsc:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

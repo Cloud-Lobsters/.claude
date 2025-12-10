@@ -38,40 +38,7 @@ When running this command, you MUST provide:
 
 ## Folder Structure
 
-**IMPORTANT:** Always wrap each table in its own folder inside `components/`, prefixed with `table-`. All files and folders must use kebab-case naming.
-
-```
-|-- stores/
-|   |-- {table-name}-table-store.ts      # Store file (e.g., claims-table-store.ts, active-policies-table-store.ts)
-|-- components/
-|   |-- table-{table-name}/              # Folder prefixed with "table-" (e.g., table-claims/, table-active-policies/)
-|   |   |-- {table-name}-table.svelte            # Main table component (TanStack Table)
-|   |   |-- {table-name}-column-defs.ts          # Column definitions and configuration (kebab-case)
-|   |   |
-|   |   |-- cells/                         # Individual cell renderer components
-|   |   |   |-- {cell-type-1}-cell.svelte       # All cell files in kebab-case
-|   |   |   |-- {cell-type-2}-cell.svelte
-|   |   |   |-- {cell-type-3}-cell.svelte
-|   |   |   `-- ...
-|   |   |
-|   |   `-- toolbar/                       # Toolbar components (search, filters, actions)
-|   |       |-- {table-name}-toolbar.svelte      # All toolbar files in kebab-case
-|   |       |-- {filter-1}-filter.svelte # use -filter for component that filter data
-|   |       |-- {filter-2}.-action.svelte # use -action for component that do stuff
-|   |       `-- ...
-|
-```
-
-**Store Location:** The store file must be in the `stores/` folder at the route root, NOT inside components or table folders
-
-**Examples:**
-
-- Claims table: `components/table-claims/claims-table.svelte`
-- Claims store: `stores/claims-table-store.ts`
-- Claims column defs: `components/table-claims/claims-column-defs.ts`
-- Active policies table: `components/table-active-policies/active-policies-table.svelte`
-- Active policies store: `stores/active-policies-table-store.ts`
-- Active policies column defs: `components/table-active-policies/active-policies-column-defs.ts`
+apply the standards set out in /.claude/docs/standards/tanstack/folder-structure.md
 
 ## Cleanup
 
@@ -88,3 +55,7 @@ now check that the tanstack table has been applied by running it against
 apply the standards set out in /.claude/docs/standards/tanstack/columns-defs.ts.md  
 apply the standards set out in /.claude/docs/standards/tanstack/table-store.ts.md  
 apply the standards set out in /.claude/docs/standards/tanstack/table-svelte.md
+
+## borderaux tool bar
+
+YOU REFACTOR THE TOOLBAR ACCORING TO SO apply the standards set out in /.claude/docs/standards/tanstack/xxx-toolbar.svelte.md
