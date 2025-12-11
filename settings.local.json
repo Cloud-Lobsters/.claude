@@ -14,7 +14,9 @@
       "Bash(node -e:*)",
       "Bash(pnpm add:*)",
       "Bash(xargs sed:*)",
-      "Bash(pnpm check:svelte:*)"
+      "Bash(pnpm check:svelte:*)",
+      "Bash(npx tsx:*)",
+      "Bash(NODE_TLS_REJECT_UNAUTHORIZED=0 npx tsx:*)"
     ],
     "deny": [],
     "ask": []
