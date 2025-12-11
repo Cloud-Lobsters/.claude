@@ -10,7 +10,11 @@
       "Bash(cat:*)",
       "Bash(npx tsc:*)",
       "Bash(find:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(node -e:*)",
+      "Bash(pnpm add:*)",
+      "Bash(xargs sed:*)",
+      "Bash(pnpm check:svelte:*)"
     ],
     "deny": [],
     "ask": []
