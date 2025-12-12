@@ -16,7 +16,15 @@
       "Bash(xargs sed:*)",
       "Bash(pnpm check:svelte:*)",
       "Bash(npx tsx:*)",
-      "Bash(NODE_TLS_REJECT_UNAUTHORIZED=0 npx tsx:*)"
+      "Bash(NODE_TLS_REJECT_UNAUTHORIZED=0 npx tsx:*)",
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(pnpm test:e2e:*)",
+      "Bash(npx playwright test:*)",
+      "Bash(docker compose:*)",
+      "Bash(pnpm prisma db push:*)",
+      "Bash(timeout 10 pnpm dev:*)",
+      "Bash(grep -n \"max-w.*mx-auto.*transition-all\\|bg-white/95.*backdrop-blur\" /Users/admin/Documents/skip-deposit/src/routes/enroll/create/\\(components\\)/*.svelte)"
     ],
     "deny": [],
     "ask": []
