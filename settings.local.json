@@ -24,7 +24,9 @@
       "Bash(docker compose:*)",
       "Bash(pnpm prisma db push:*)",
       "Bash(timeout 10 pnpm dev:*)",
-      "Bash(grep -n \"max-w.*mx-auto.*transition-all\\|bg-white/95.*backdrop-blur\" /Users/admin/Documents/skip-deposit/src/routes/enroll/create/\\(components\\)/*.svelte)"
+      "Bash(grep -n \"max-w.*mx-auto.*transition-all\\|bg-white/95.*backdrop-blur\" /Users/admin/Documents/skip-deposit/src/routes/enroll/create/\\(components\\)/*.svelte)",
+      "Bash(grep:*)",
+      "Bash(pnpm prisma generate:*)"
     ],
     "deny": [],
     "ask": []
