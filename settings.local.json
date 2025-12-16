@@ -28,7 +28,13 @@
       "Bash(grep:*)",
       "Bash(pnpm prisma generate:*)",
       "Bash(pnpm db:generate:*)",
-      "Bash(pnpm db:push:*)"
+      "Bash(pnpm db:push:*)",
+      "Bash(npx svelte-check:*)",
+      "Bash(tee:*)",
+      "Bash(for i in 1 2 3)",
+      "Bash(do echo \"=== Run $i ===\")",
+      "Bash(done)",
+      "Bash(timeout 60 pnpm check:*)"
     ],
     "deny": [],
     "ask": []
