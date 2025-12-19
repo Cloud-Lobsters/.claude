@@ -35,7 +35,8 @@
       "Bash(do echo \"=== Run $i ===\")",
       "Bash(done)",
       "Bash(timeout 60 pnpm check:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(timeout 60 npx playwright test:*)"
     ],
     "deny": [],
     "ask": []
